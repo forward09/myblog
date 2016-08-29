@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        title= appTitle
+        script(type="text/javascript", src="js/jquery.js")
+        link(rel="stylesheet", href="/css/")
+        link(rel="stylesheet", href="/css/")
+        link(rel="stylesheet", href="/css/style.css")
+        script(type="text/javascript", src="")
+        script(type="text/javascript", src="/js/blog.js")
+        meta(name="viewport", content="")
+
+    body
+        #wrap
+            .container
+            h1.page-header= appTitle
+            p.lead Welcome to my blog
+                a(href="http://www.weibo.com/yimiao") @温佛德可爱多
+                |. Please enjoy.
+            block page
+            
