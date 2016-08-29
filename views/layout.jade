@@ -18,4 +18,18 @@ html
                 a(href="http://www.weibo.com/yimiao") @温佛德可爱多
                 |. Please enjoy.
             block page
+            block header
+                div
+                    include includes/menu
+            block alert
+                div.alert.alert-warning.hidden
+            .content
+                block content
+        block footer
+            footer
+                .container
+                    p
+                        | Copyright &copy; 2014 | Issues? Submit to
+                        a(href="http://www.weibo.com/yimiao") Winfred Xu
+                        |.
             
