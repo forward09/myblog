@@ -8,11 +8,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "errorhandler": "^1.4.3",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "jade": "^1.11.0",
+    "method-override": "^2.3.6",
     "mocha": "^3.0.2",
     "mongodb": "^2.2.8",
     "mongoskin": "^2.1.0",
+    "morgan": "^1.7.0",
     "stylus": "^0.54.5"
   }
 }
