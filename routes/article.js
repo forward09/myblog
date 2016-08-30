@@ -27,3 +27,15 @@ exports.add = function(req, res, next){
         res.send(articleResponse);
     });
 };
+
+exports.edit = function(req, res, next){
+    if(!req.params.id) return next(new Error('No article'));
+    if(!req.body.article) return next(new Error('No article'));
+
+    var article = req.body.article;
+
+    req.collections.articles.updateById(req.params.id, {$set: article}, function(error, response){
+        if(error) return next(error);
+        res.send({affectedCount: response});
+    });
+}
