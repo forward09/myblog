@@ -1,5 +1,5 @@
 var express = require('express');
-var routes = require('/routes');
+var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var mongoskin = require('mongoskin');
@@ -32,7 +32,7 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urelencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,15 +45,15 @@ app.get('/', routes.index);
 app.get('/login', routes.user.login);
 app.post('/login', routes.user.authenticate);
 app.get('/logout', routes.user.logout);
-app.get('/admin', routes.article.admin);
-app.get('/post', routes.article.post);
-app.post('/post', routes.article.postArticle);
+//app.get('/admin', routes.article.admin);
+//app.get('/post', routes.article.post);
+//app.post('/post', routes.article.postArticle);
 app.get('/articles/:slug', routes.article.show);
 
 app.get('/api/articles', routes.article.list);
 app.post('/api/articles', routes.article.add);
-app.put('/api/articles/:id', routes.article.edit);
-app.del('/api/articles/:id', routes.article.del);
+//app.put('/api/articles/:id', routes.article.edit);
+//app.del('/api/articles/:id', routes.article.del);
 
 app.all("*", function (req, res) {
     res.send(404);
