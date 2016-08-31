@@ -42,10 +42,10 @@ var update = function(event){
       $('.alert').addClass('hidden');
 
       if(data.published){
-        $tr.removeClass('unpublished').find('.glyphicon-play').removeClass('.glyphicon-play').addClass('.glyphicon-pause');
+        $tr.removeClass('unpublished').find('.glyphicon-play').removeClass('glyphicon-play').addClass('glyphicon-pause');
       }
       else{
-        $tr.addClass('unpublished').find('.glyphicon-pause').removeClass('.glyphicon-pause').addClass('.glyphicon-play');
+        $tr.addClass('unpublished').find('.glyphicon-pause').removeClass('glyphicon-pause').addClass('glyphicon-play');
       }
     }
   });
