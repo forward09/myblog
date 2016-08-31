@@ -45,15 +45,15 @@ app.get('/', routes.index);
 app.get('/login', routes.user.login);
 app.post('/login', routes.user.authenticate);
 app.get('/logout', routes.user.logout);
-//app.get('/admin', routes.article.admin);
-//app.get('/post', routes.article.post);
-//app.post('/post', routes.article.postArticle);
+app.get('/admin', routes.article.admin);
+app.get('/post', routes.article.post);
+app.post('/post', routes.article.postArticle);
 app.get('/articles/:slug', routes.article.show);
 
 app.get('/api/articles', routes.article.list);
 app.post('/api/articles', routes.article.add);
-//app.put('/api/articles/:id', routes.article.edit);
-//app.del('/api/articles/:id', routes.article.del);
+app.put('/api/articles/:id', routes.article.edit);
+app.delete('/api/articles/:id', routes.article.del);
 
 app.all("*", function (req, res) {
     res.send(404);

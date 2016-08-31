@@ -39,3 +39,43 @@ exports.edit = function(req, res, next){
         res.send({affectedCount: response});
     });
 }
+
+exports.del = function(req, res, next){
+    if(!req.params.id) return next(new Error('No article'));
+
+    req.collections.articles.removeById(req.params.id, function(error, response){
+        if(error) return next(error);
+        res.send({affectedCount: response});
+    })
+}
+
+exports.post = function(req, res, next){
+    if(!req.body.title)
+    res.render('post');
+}
+
+exports.postArticle = function(req, res, next){
+    if(!req.body.title || !req.body.slug || !req.body.text){
+        return res.render('post',{error: 'Fill in title, slug and text'});
+    }
+
+    var article = {
+        title: req.body.title,
+        slug: req.body.slug,
+        text: req.body.text,
+        published: false
+    };
+
+    req.collections.articles.insert(article,function(error, response){
+        if(error) return next(error);
+
+        res.render('post', {error: 'article was added, publish it on admin page'});
+    });
+}
+
+exports.admin = function(req, res, next){
+    req.collections.articles.find({}, {sort: {id: -1}}).toArray(function(error, articles){
+        if(error) return next(error);
+        res.render('admin', {articles: articles});
+    });
+}
