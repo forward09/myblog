@@ -15,11 +15,10 @@ var findTr = function(event){
 }
 
 var remove = function(event){
-  alert('I got it');
   var $tr = findTr(event);
   var id = $tr.data('id');
   $.ajax({
-    url:'/api/articles'+id,
+    url:'/api/articles/'+id,
     type:'DELETE',
     success: function(data, status, xhr){
       $('.alert').addClass('hidden');
@@ -29,13 +28,12 @@ var remove = function(event){
 }
 
 var update = function(event){
-  alert('I got it 2');
   var $tr = findTr(event);
   $tr.find('button').attr('disabled', 'disabled');
   var data = {published: $tr.hasClass('unpublished')};
   var id = $tr.attr('data-id');
   $.ajax({
-    url:'api/articles' + id,
+    url:'/api/articles/' + id,
     type: 'PUT',
     contentType: 'application/json',
     data: JSON.stringify({article: data}),
